@@ -77,8 +77,8 @@ void main_task(void *pvParameter) {
      * Init POWER MOSFET
      *
      * @important I have to use a "weak" external 1M Ohm pulldown resistor with this MOSFET to pull the line down and guarantee low power consumption (battery mode).
-     *            In deinit() do not use gpio_reset_pin()! "I (12790) gpio: GPIO[4]| InputEn: 0| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0"
-     *            For GPIO#4 the func gpio_reset_pin() pulls UP the signal with a "strong" 10-50K Ohm, overriding my "weaker" 1M Ohm pull DOWN, meaning the line is always UP and so the MOSFET is always ON!
+     *            In deinit() do not use gpio_reset_pin()! "I (12790) gpio: GPIO[4]| InputEn: 0| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0":
+     *              for GPIO#4 the func gpio_reset_pin() pulls UP the signal with a "strong" 10-50K Ohm, overriding my "weaker" 1M Ohm pull DOWN, meaning the line is always UP and so the MOSFET is always ON!
      *
      */
     ESP_LOGI(TAG, "  Init POWER MOSFET...");
@@ -87,7 +87,7 @@ void main_task(void *pvParameter) {
 
     mosfet_config.pin_bit_mask = (1ULL << MY_POWER_MOSFET_GATE_GPIO_NUM);
     mosfet_config.mode = GPIO_MODE_OUTPUT;
-    mosfet_config.pull_down_en = GPIO_PULLDOWN_DISABLE; // @important I have to use an external 1M Ohm pulldown resistor to pull the line down (!M Ohm = low power consumption in battery mode).
+    mosfet_config.pull_down_en = GPIO_PULLDOWN_DISABLE; // @important I have to use an external 1M Ohm pulldown resistor to pull the line down (1M Ohm = low power consumption in battery mode).
     mosfet_config.pull_up_en = GPIO_PULLUP_DISABLE;
     mosfet_config.intr_type = GPIO_PIN_INTR_DISABLE;
 
@@ -233,6 +233,8 @@ void main_task(void *pvParameter) {
 
     /********************************************************************************
      * DeInit POWER MOSFET
+     * @brief Cut power to the sensor and the OLED to save power when the peripherals are not in use.
+     *
      */
     ESP_LOGI(TAG, "  DeInit POWER MOSFET...");
 
@@ -248,7 +250,6 @@ void main_task(void *pvParameter) {
 
     /********************************************************************************
      * DEEP SLEEP & RESTART TIMER
-     * @sop Put this section in comments when testing other things afterwards (else the MCU restarts every time...).
      * @important In deep sleep mode, wireless peripherals are powered down. Before entering sleep mode, applications must disable WiFi and BT using appropriate calls (esp_wifi_stop(), esp_bluedroid_disable(), esp_bt_controller_disable()).
      * @doc https://esp-idf.readthedocs.io/en/latest/api-reference/system/sleep_modes.html
      *

@@ -1,13 +1,13 @@
 ## Project Description esp32_jsnsr04t_oled_mosfet_using_lib
 This project uses the ESP-IDF components "mjd_jsnsr04t" and "mjd_ssd1306".
 
-It demonstrates all the features of the JSN-SR04T V2.0 Waterproof Ultrasonic Sensor Module in combination with:
+It demonstrates all the features of **the JSN-SR04T V2.0 Waterproof Ultrasonic Sensor Module** in combination with:
 
-- An ESP32 development board
-- An OLED display module to show the measurements
-- A Power MOSFET to turn the sensor on and off (to save power consumption during deep sleep)
+- An ESP32 development board.
+- An OLED display module to show the measurements.
+- A Power MOSFET to turn the sensor on and off (to save power consumption during deep sleep).
 - A deep sleep cycle.
-- It also dumps the measurements in the debug log.
+- It dumps the measurements in the debug log.
 
 Goto the component directory "components/mjd_jsnsr04t" for documentation, installation, soldering instructions (if any), wiring instructions, data sheets, FAQ, photo's, etc.
 
@@ -19,8 +19,8 @@ Goto the component directory "components/mjd_jsnsr04t" for documentation, instal
 
 @tip The README of each ESP_IDF component contains a section "Shop Product".
 
-- ESP development board. I suggest to buy a popular development board with good technical documentation and a significant user base. Examples: [Adafruit HUZZAH32](https://www.adafruit.com/product/3405), [LOLIN D32](https://wiki.wemos.cc/products:d32:d32), [Espressif ESP32-DevKitC](http://espressif.com/en/products/hardware/esp32-devkitc/overview), [Pycom WiPy](https://pycom.io/hardware/).
-- JSN-SR04T-2.0 Waterproof Ultrasonic Sensor. Make sure to get the V2.0. 
+- ESP development board. I suggest to buy a popular development board with good technical documentation and a significant user base. Examples: [LOLIN D32](https://wiki.wemos.cc/products:d32:d32), [Adafruit HUZZAH32](https://www.adafruit.com/product/3405), [LOLIN D32](https://wiki.wemos.cc/products:d32:d32), [Espressif ESP32-DevKitC](http://espressif.com/en/products/hardware/esp32-devkitc/overview), [Pycom WiPy](https://pycom.io/hardware/).
+- JSN-SR04T-2.0 Waterproof Ultrasonic Sensor. **Make sure to get the V2.0 which also works with 3.3V.** 
 - OLED Display Module 0.91 Inch 128x32 Blue I2C SSD1306 DC 3.3V 5V.
 - N Channel Power MOSFET that is 3.3V compatible. Good ones:
   - IRF3708 N-Channel Power MOSFET in package THT TO-220.
